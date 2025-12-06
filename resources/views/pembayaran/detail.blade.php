@@ -43,7 +43,7 @@ document.getElementById('pay-button').addEventListener('click', function () {
             "X-CSRF-TOKEN": "{{ csrf_token() }}"
         },
         body: JSON.stringify({
-            id: "{{ $pembayaran->id }}",
+            id: {{ $pembayaran->id }},
             nama: "{{ $pembayaran->user->nama }}",
             hp: "{{ $pembayaran->user->no_hp }}",
             total: {{ $pembayaran->pembayaran }}
@@ -51,11 +51,24 @@ document.getElementById('pay-button').addEventListener('click', function () {
     })
     .then(response => response.json())
     .then(data => {
+
         snap.pay(data.token, {
-            onSuccess: function(result){ console.log(result); },
-            onPending: function(result){ console.log(result); },
-            onError: function(result){ console.log(result); }
+
+            onSuccess: function(result){
+                window.location.href = "/payment/success";
+            },
+
+            onPending: function(result){
+                console.log("Pending:", result);
+            },
+
+            onError: function(result){
+                alert("Pembayaran gagal!");
+                console.log(result);
+            },
+
         });
+
     });
 
 });

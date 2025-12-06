@@ -13,11 +13,11 @@ class PaymentController extends Controller
         try {
 
             // KONFIGURASI MIDTRANS
-            Config::$serverKey    = config('midtrans.server_key');
-            Config::$clientKey    = config('midtrans.client_key');
-            Config::$isProduction = config('midtrans.is_production');
-            Config::$isSanitized  = config('midtrans.is_sanitized');
-            Config::$is3ds        = config('midtrans.is_3ds');
+            Config::$serverKey    = config('Midtrans.server_key');
+            Config::$clientKey    = config('Midtrans.client_key');
+            Config::$isProduction = config('Midtrans.is_production');
+            Config::$isSanitized  = config('Midtrans.is_sanitized');
+            Config::$is3ds        = config('Midtrans.is_3ds');
 
             // PARAMETER PEMBAYARAN
             $params = [

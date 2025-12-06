@@ -63,6 +63,7 @@ class SewaController extends Controller
                 'awal_sewa'  => $request->awal_sewa,
                 'akhir_sewa' => $request->akhir_sewa,
                 'status'     => 'nonaktif',
+                
             ]);
 
             // 6. UPDATE STATUS LOKER → DISEWA
