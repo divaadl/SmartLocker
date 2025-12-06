@@ -2,12 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LockerController;
+use App\Http\Controllers\SewaController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// routes/web.php
-Route::get('/', [LockerController::class, 'index'])->name('locker.index');
-Route::get('/sewa/{locker}', [LockerController::class, 'create'])->name('locker.create');
-Route::post('/sewa/{locker}', [LockerController::class, 'store'])->name('locker.store');
+Route::get('/', [SewaController::class, 'beranda'])->name('beranda');
+Route::post('/sewa', [SewaController::class, 'sewa'])->name('sewa.store');

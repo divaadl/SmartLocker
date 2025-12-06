@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Pembayaran extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'id_loker_akses',
+        'pembayaran',
+    ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function lokerAkses(): BelongsTo
+    {
+        return $this->belongsTo(LokerAkses::class, 'id_loker_akses');
+    }
+}
