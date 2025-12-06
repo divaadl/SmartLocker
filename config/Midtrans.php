@@ -6,4 +6,9 @@ return [
     'server_key' => env('MIDTRANS_SERVER_KEY'),
     'is_production' => env('MIDTRANS_IS_PRODUCTION', false),
     'snap_url' => env('MIDTRANS_SNAP_URL'),
+
+    // WAJIB DITAMBAH
+    'is_sanitized' => true,
+    'is_3ds' => true,
 ];
+

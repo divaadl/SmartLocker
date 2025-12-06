@@ -87,26 +87,18 @@ class SewaController extends Controller
 
             DB::commit();
 
-            // 9. RETURN RESPONSE
-            return response()->json([
-                'status'      => 'success',
-                'message'     => 'Sewa berhasil dibuat',
-                'user'        => $user,
-                'loker'       => $loker,
-                'loker_akses' => $akses,
-                'pembayaran'  => $pembayaran,
-                'kode_akses'  => $kodeAkses,
-                'durasi_jam'  => $durasiJam,
-            ]);
+            return redirect()->route('pembayaran.detail', $pembayaran->id);
+                } catch (\Exception $e) {
 
-        } catch (\Exception $e) {
-
-            DB::rollBack();
-
-            return response()->json([
-                'status'  => 'error',
-                'message' => $e->getMessage()
-            ], 500);
-        }
+                DB::rollBack();
+                return back()->with('error', $e->getMessage());
+            }
     }
+
+    public function detailPembayaran($id){
+    $pembayaran = Pembayaran::with(['user', 'lokerAkses.loker'])->findOrFail($id);
+
+    return view('pembayaran.detail', compact('pembayaran'));
+    }
+
 }
