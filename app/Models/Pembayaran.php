@@ -14,6 +14,8 @@ class Pembayaran extends Model
         'user_id',
         'id_loker_akses',
         'pembayaran',
+        'order_id',   
+        'status',     
     ];
 
     public function user(): BelongsTo
